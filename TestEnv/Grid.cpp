@@ -22,42 +22,21 @@ void Grid::createGrid()
 			}
 		}
 	}
-	for (int i = 0; i < COLUMNS; i++)
-	{
-		for (int j = 0; j < ROWS; j++)
-		{
-			filled[i][j] = 0;
-		}
-	}
 }
 
-int Grid::getGrid(Grid* grid)
+void Grid::draw(sf::RenderWindow& window)
 {
-// 	for (int i = 0; i < COLUMNS; i++)
-// 	{
-// 		for (int j = 0; j < ROWS; j++)
-// 		{
-// 			std::cout << "getGrid()<GRID>[" << i << "][" << j << "]: ";
-// 			std::cout << grid->grid[i][j] << std::endl;
-// 		}
-// 	}
-	return grid->grid[COLUMNS - 1][ROWS - 1];
-}
-
-void Grid::drawGrid(sf::RenderWindow& window)
-{
-	for (int i = 0; i <= 630; i += 10)
+	for (int i = 0; i <= 630; i += CELLSIZE)
 	{
-		for (int j = 0; j <= 470; j += 10)
+		for (int j = 0; j <= 470; j += CELLSIZE)
 		{
-			if(grid[i / CELLSIZE][j / CELLSIZE] == 1 && filled[i / CELLSIZE][j / CELLSIZE] == 0)
+			if (grid[i / CELLSIZE][j / CELLSIZE] == 0)
 			{
-				tile.empty.setSize(sf::Vector2f(CELLSIZE, CELLSIZE));
-				tile.empty.setOutlineColor(sf::Color::Green); 
-				tile.empty.setOutlineThickness(2);
-				tile.empty.setPosition(i, j);
-				window.draw(tile.empty);
-			}
+				tile._default.setSize(sf::Vector2f(CELLSIZE - 1, CELLSIZE - 1));				
+				tile._default.setFillColor(sf::Color::White);
+				tile._default.setPosition(i, j);
+				window.draw(tile._default); //set up default
+			}			
 		}
 	}
 }

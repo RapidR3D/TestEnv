@@ -37,14 +37,15 @@ void Engine::processInput()
 				pf.test();
 			}
 		}
+		pf.pathfindInput(event);
 	}
 }
 
 void Engine::render()
 {
 	window.clear();
-
-	grid.drawGrid(window);
+	grid.draw(window);
+	pf.drawGrid(window);	
 	window.display();
 }
 
