@@ -92,7 +92,7 @@ void Pathfinder::dijkstra(int sourceX, int sourceY, int destX, int destY, Grid& 
 	this->_sourceX = sourceX;
 	this->_sourceY = sourceY;
 
-	this->gridRef = grid;
+	this->gridRef =  grid;	
 	
 	std::pair<int, int> previous[COLUMNS][ROWS];
 	float _distance[COLUMNS][ROWS];
@@ -194,7 +194,7 @@ void Pathfinder::pathfindInput(sf::Event& event)
 			{
 				gridRef.grid[column][row] = 0;				
 			}
-			std::cout << "Cell " << row << ", " << column << " state is: " << gridRef.grid[row][column] << std::endl;			
+			//std::cout << "Cell " << row << ", " << column << " state is: " << gridRef.grid[row][column] << std::endl;			
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 		{

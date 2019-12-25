@@ -11,13 +11,6 @@ struct Tile
 
 	sf::RectangleShape empty;
 	sf::RectangleShape _default;
-	sf::RectangleShape obstacle;
-
-	int tPosX;
-	int tPosY;
-
-	sf::Vector2f tilePosition;
-
-	//Tile() {}
+	sf::RectangleShape obstacle;	
 };
 
