@@ -5,9 +5,9 @@ Pathfinder::Pathfinder(Grid& grid): gridRef(grid)
 	std::cout << "Pathfinder constructor" << std::endl;
 
 	_sourceX = 2;
-	_sourceY = 2;
+	_sourceY = 4;
 
-	_destX = 42;
+	_destX = 60;
 	_destY = 42;
 
 	init(_sourceX, _sourceY, _destX, _destY);	
@@ -265,13 +265,13 @@ void Pathfinder::drawGrid(sf::RenderWindow& window)
 	_tile.originNode.setOutlineColor(sf::Color::Red);
 	_tile.originNode.setOutlineThickness(1);
 	_tile.originNode.setFillColor(sf::Color::Blue);
-	_tile.originNode.setPosition(CELLSIZE * _sourceY, CELLSIZE * _sourceX);
+	_tile.originNode.setPosition(CELLSIZE * _sourceX, CELLSIZE * _sourceY);
 	window.draw(_tile.originNode);
 
 	_tile.destNode.setSize(sf::Vector2f(CELLSIZE, CELLSIZE));
 	_tile.destNode.setOutlineColor(sf::Color::Blue);
 	_tile.destNode.setOutlineThickness(1);
 	_tile.destNode.setFillColor(sf::Color::Red);
-	_tile.destNode.setPosition(CELLSIZE * _destY, CELLSIZE * _destY);
+	_tile.destNode.setPosition(CELLSIZE * _destX, CELLSIZE * _destY);
 	window.draw(_tile.destNode);
 }
