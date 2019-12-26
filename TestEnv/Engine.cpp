@@ -24,17 +24,24 @@ void Engine::processInput()
 			}
 			if (event.key.code == sf::Keyboard::Space)
 			{
-				std::cout << "space bar" << std::endl;				
+				//std::cout << "space bar" << std::endl;				
 			}
 			if (event.key.code == sf::Keyboard::G)
 			{
-				std::cout << "G" << std::endl;
+				//std::cout << "G" << std::endl;
 				grid.test();
 			}
 			if (event.key.code == sf::Keyboard::P)
 			{
-				std::cout << "P" << std::endl;
+				//std::cout << "P" << std::endl;
 				pf.test();
+			}
+			if (event.key.code == sf::Keyboard::R)
+			{
+				//std::cout << "P" << std::endl;
+				//pf.test();
+				pf.reset();
+				render();
 			}
 		}
 		pf.pathfindInput(event);

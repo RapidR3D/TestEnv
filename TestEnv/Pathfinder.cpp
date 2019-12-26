@@ -45,6 +45,19 @@ void Pathfinder::init(int sourceX, int sourceY, int destX, int destY)
 	}
 }
 
+void Pathfinder::reset()
+{
+	if (!dijkstraPath.empty())
+	{
+		for (int i = 0; i < dijkstraPath.size(); i++)
+		{
+			filled[dijkstraPath[i].first][dijkstraPath[i].second] = 0;
+		}
+	}
+	dijkstraPath.clear();
+	init(_sourceX, _sourceY, _destX, _destY);
+}
+
 void Pathfinder::findMin(float distance[COLUMNS][ROWS], int& minX, int& minY)
 {
 	float minTemp = FLT_MAX;

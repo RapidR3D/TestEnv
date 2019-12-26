@@ -25,6 +25,7 @@ public:
 
 	void test() const;
 	void init(int sourceX, int sourceY, int destX, int destY);
+	void reset();
 
 	void findMin(float distance[COLUMNS][ROWS], int& minX, int& minY);
 	void findPath(std::pair<int, int> previous[COLUMNS][ROWS], float distance[COLUMNS][ROWS], int destX, int destY, int sourceX, int sourceY);
