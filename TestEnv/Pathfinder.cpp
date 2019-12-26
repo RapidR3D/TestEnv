@@ -208,33 +208,27 @@ void Pathfinder::drawGrid(sf::RenderWindow& window)
 	if (!dijkstraPath.empty())
 	{
 		for (int i = 0; i < dijkstraPath.size(); i++)
-		{
-			_tile.path.setSize(sf::Vector2f(CELLSIZE - 1, CELLSIZE - 1));
-			_tile.path.setFillColor(sf::Color::Black);
-			_tile.path.setOutlineThickness(1);
-			_tile.path.setOutlineColor(sf::Color::White);
-			_tile.path.setPosition(CELLSIZE * dijkstraPath[i].second, CELLSIZE * dijkstraPath[i].first);
-			window.draw(_tile.path);
+		{ 			
 			filled[dijkstraPath[i].first][dijkstraPath[i].second] = 1;
 		}
 	}
 	for (int i = 0; i <= 630; i += CELLSIZE)
 	{
 		for (int j = 0; j <= 470; j += CELLSIZE)
-		{
-			if (exploredCells[i / CELLSIZE][j / CELLSIZE] == true && filled[i / CELLSIZE][j / CELLSIZE] == 0)
+		{ 			
+			if (gridRef.grid[i / CELLSIZE][j / CELLSIZE] == 1 && filled[i / CELLSIZE][j / CELLSIZE] == 1)
 			{
-				_tile.empty.setSize(sf::Vector2f(CELLSIZE - 1, CELLSIZE - 1));
-				_tile.empty.setOutlineThickness(.5);
-				_tile.empty.setOutlineColor(sf::Color::Red);
-				_tile.empty.setFillColor(sf::Color::Yellow);
-				_tile.empty.setPosition(i, j);
-				window.draw(_tile.empty);        
+				_tile.path.setSize(sf::Vector2f(CELLSIZE, CELLSIZE));
+				_tile.path.setFillColor(sf::Color::Green);
+				_tile.path.setOutlineColor(sf::Color::Black);
+				_tile.path.setOutlineThickness(2);
+				_tile.path.setPosition(i, j);
+				window.draw(_tile.path);//path
 			}
 			if (gridRef.grid[i / CELLSIZE][j / CELLSIZE] == 1 && filled[i / CELLSIZE][j / CELLSIZE] == 0)
 			{
 				_tile.searchedCell.setSize(sf::Vector2f(CELLSIZE, CELLSIZE));
-				_tile.searchedCell.setFillColor(sf::Color::Green);
+				_tile.searchedCell.setFillColor(sf::Color(255, 102, 102));
 				_tile.searchedCell.setOutlineColor(sf::Color::Black);
 				_tile.searchedCell.setOutlineThickness(2);
 				_tile.searchedCell.setPosition(i, j);
@@ -262,16 +256,16 @@ void Pathfinder::drawGrid(sf::RenderWindow& window)
 	}
 
 	_tile.originNode.setSize(sf::Vector2f(CELLSIZE, CELLSIZE));
-	_tile.originNode.setOutlineColor(sf::Color::Red);
+	_tile.originNode.setOutlineColor(sf::Color::Blue);
 	_tile.originNode.setOutlineThickness(1);
-	_tile.originNode.setFillColor(sf::Color::Blue);
+	_tile.originNode.setFillColor(sf::Color::Green);
 	_tile.originNode.setPosition(CELLSIZE * _sourceX, CELLSIZE * _sourceY);
 	window.draw(_tile.originNode);
 
 	_tile.destNode.setSize(sf::Vector2f(CELLSIZE, CELLSIZE));
-	_tile.destNode.setOutlineColor(sf::Color::Blue);
+	_tile.destNode.setOutlineColor(sf::Color::Green);
 	_tile.destNode.setOutlineThickness(1);
-	_tile.destNode.setFillColor(sf::Color::Red);
+	_tile.destNode.setFillColor(sf::Color::Blue);
 	_tile.destNode.setPosition(CELLSIZE * _destX, CELLSIZE * _destY);
 	window.draw(_tile.destNode);
 }
